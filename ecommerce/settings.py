@@ -129,5 +129,5 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT=BASE_DIR/'static/images'
 
-razor_pay_key_id='rzp_test_sAyxyfIgAiDScI'
-key_secret="P9t723C1JX5pK8XMrTDOMquh"
+KEY='rzp_test_sAyxyfIgAiDScI'
+SECRET="P9t723C1JX5pK8XMrTDOMquh"

@@ -12,7 +12,7 @@ class Customer(models.Model):
 
 class Product(models.Model):
     name=models.CharField(max_length=200,null=True)
-    price=models.DecimalField(max_digits=7,decimal_places=2)
+    price=models.IntegerField(null=True,blank=True)
     digital=models.BooleanField(default=False,null=True,blank=False)
     image=models.ImageField(null=True,blank=True)
     def __str__(self):
@@ -30,7 +30,9 @@ class Order(models.Model):
     date_ordered=models.DateTimeField(auto_now_add=True)
     complete=models.BooleanField(default=False,null=True,blank=False)
     transaction_id=models.CharField(max_length=200,null=True)
-
+    razor_pay_order_id=models.CharField(max_length=100,null=True,blank=True)
+    razor_pay_payment_id=models.CharField(max_length=100,null=True,blank=True)
+    razor_pay_payment_signature=models.CharField(max_length=100,null=True,blank=True)
     def __str__(self):
         return str(self.id)
     

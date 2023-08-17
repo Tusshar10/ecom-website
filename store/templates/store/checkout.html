@@ -40,7 +40,7 @@
         <div>
         <br>
 		<div class="box-element hidden" id="payment-info">
-			<small>Pay With RazroPay</small>
+			<small>Pay With RazorPay</small>
             <div id="razorpay-button-container"></div>
             <!-- <button id="make-payment">Make Payment</button> -->
 		</div>
@@ -68,9 +68,10 @@
 </div>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
+    var total='{{order.get_cart_total}}'
     var options = {
         "key": "rzp_test_sAyxyfIgAiDScI", // Enter the Key ID generated from the Dashboard
-        "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "amount": parseFloat(total).toFixed(2), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": "Ecom",
         "description": "Purchases",
@@ -102,7 +103,6 @@
     </script>
 <script>
     var shipping='{{order.shipping}}'
-    
     var user='{{request.user}}';
     if(shipping=='False')
     {

@@ -5,6 +5,8 @@ import datetime
 import json
 from .utils import cookieCart,cartData,guestOrder
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+import razorpay
 # Create your views here.
 def store(request):
     data=cartData(request)
@@ -26,7 +28,12 @@ def checkout(request):
     cartitems=data['cartitems']
     order=data['order']
     items=data['items']
-    context={'items':items,"order":order,'cartitems':cartitems}
+    client=razorpay.Client(auth=(settings.KEY,settings.SECRET))
+    payment=client.order.create({'amount':order.get_cart_total*100,'currency':'INR','payment_capture':1})
+    context={'items':items,"order":order,'cartitems':cartitems,'payment':payment}
+    print("*************")
+    print(payment)
+    print("**************")
     return render(request,'store/checkout.html',context)
 
 def updateItem(request):
