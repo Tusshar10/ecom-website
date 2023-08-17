@@ -131,3 +131,4 @@ MEDIA_ROOT=BASE_DIR/'static/images'
 
 KEY='rzp_test_sAyxyfIgAiDScI'
 SECRET="P9t723C1JX5pK8XMrTDOMquh"
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"

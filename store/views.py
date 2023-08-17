@@ -31,9 +31,8 @@ def checkout(request):
     client=razorpay.Client(auth=(settings.KEY,settings.SECRET))
     payment=client.order.create({'amount':order.get_cart_total*100,'currency':'INR','payment_capture':1})
     context={'items':items,"order":order,'cartitems':cartitems,'payment':payment}
-    print("*************")
-    print(payment)
-    print("**************")
+    order.razor_pay_order_id=payment['id']
+    order.save()
     return render(request,'store/checkout.html',context)
 
 def updateItem(request):
